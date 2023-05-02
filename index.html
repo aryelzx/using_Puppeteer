@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <p>Consumindo imagens do <a href="https://aryelportfolio.netlify.app/">Portfólio</a></p>
+  <div class="container">
+  </div>
+  <script>
+    (async() =>{
+      const response = await fetch('./imagens.json')
+      const data = await response.json()
+
+      const htmlList = data.map( ({src})=> `<li><img src="${src}"</li>`)
+
+      document.querySelector('.container').innerHTML = `<ul>${htmlList.join('')}</ul>`
+    })()
+  </script>
+</body>
+</html>
